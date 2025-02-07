@@ -1,0 +1,19 @@
+.modal {
+	background: black;
+	color: white;
+	margin: 30px;
+	padding: 30px;
+	border-radius: 20px;
+}
+.modal form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 30px;
+}
+.modal textarea, .modal input {
+	margin-left: 10px;
+	width: 300px;
+}
+
