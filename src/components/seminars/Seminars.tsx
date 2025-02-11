@@ -29,9 +29,9 @@ const Seminars: React.FC = () => {
 				setSeminars(data);
 			} catch (error) {
 				if (error instanceof Error) {
-					setError(error.message); // Приведение к типу Error
+					setError(error.message); 
 				} else {
-					setError('Неизвестная ошибка'); // Обработка других типов ошибок
+					setError('Неизвестная ошибка'); 
 				}
 			} finally {
 				setLoading(false);
