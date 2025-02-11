@@ -1,11 +1,9 @@
 import { Seminars } from './components/seminars/Seminars'
 
-function App() {
+export default function App() {
 	return (
 		<>
 			<Seminars />
 		</>
 	)
 }
-
-export default App
