@@ -74,14 +74,7 @@ export const Seminars = () => {
 		)
 	if (error)
 		return (
-			<div
-				style={{
-					display: 'flex',
-					justifyContent: 'center',
-					alignItems: 'center',
-					fontSize: 50,
-				}}
-			>
+			<div className='error'>
 				{error}
 			</div>
 		)
