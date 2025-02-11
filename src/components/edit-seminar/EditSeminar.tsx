@@ -2,6 +2,8 @@ import { useState } from 'react'
 import Modal from 'react-modal'
 import { EditSeminarProps } from '../../types/types'
 import styles from './EditSeminar.module.css'
+import { IoIosCloseCircle } from 'react-icons/io'
+import { FaRegSave } from 'react-icons/fa'
 
 export const EditSeminar = ({
 	isOpen,
@@ -74,10 +76,10 @@ export const EditSeminar = ({
 						required
 					/>
 				</label>
-				<button type='submit'>Сохранить</button>
-				<button type='button' onClick={onRequestClose}>
-					Закрыть
-				</button>
+				<button className={styles.btnSave} type='submit'>Сохранить <FaRegSave/></button>
+				
+				<IoIosCloseCircle className={styles.btnClose} type='button' onClick={onRequestClose}/>
+				
 			</form>
 		</Modal>
 	)

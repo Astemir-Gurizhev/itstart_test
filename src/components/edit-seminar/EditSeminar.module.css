@@ -1,19 +1,41 @@
 .modal {
-	background: black;
+	position: relative;
+	background: rgb(36, 36, 36);
 	color: white;
-	margin: 30px;
 	padding: 30px;
 	border-radius: 20px;
+	max-width: 500px;
+	margin: 20vh auto;
 }
 .modal form {
+	margin-top: 50px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	gap: 30px;
 }
-.modal textarea, .modal input {
+.modal textarea,
+.modal input {
 	margin-left: 10px;
-	width: 300px;
+	width: 280px;
 }
 
+.btnSave {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	font-size: 18px;
+}
+
+.btnClose {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	cursor: pointer;
+	font-size: 30px;
+	transition: 0.7s;
+}
+.btnClose:hover {
+	transform: scale(1.2);
+}

@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import { FaSpinner } from 'react-icons/fa'
+import { RiDeleteBin5Line } from 'react-icons/ri'
 import { useSeminars } from '../../hooks/useSeminars'
 import { Seminar } from '../../types/types'
 import { EditSeminar } from '../edit-seminar/EditSeminar'
 import styles from './Seminars.module.css'
+import { MdModeEdit } from 'react-icons/md'
 
 export const Seminars = () => {
 	const { seminars, loading, error, handleDelete, handleSave } = useSeminars()
@@ -24,14 +26,16 @@ export const Seminars = () => {
 	if (error) return <div className='error'>{error}</div>
 
 	return (
-		<div>
+		<div className={styles.seminars}>
 			<h1>Семинары</h1>
 			<div className={styles.posts}>
 				{seminars.map(seminar => (
 					<div className={styles.post} key={seminar.id}>
 						<h2>{seminar.title}</h2>
-						<button onClick={() => handleEdit(seminar)}>Редактировать</button>
-						<button onClick={() => handleDelete(seminar.id)}>Удалить</button>
+						<div className={styles.actionBtns}>
+							<MdModeEdit className={styles.editBtn}  onClick={() => handleEdit(seminar)}/>
+							<RiDeleteBin5Line className={styles.deleteBtn} onClick={() => handleDelete(seminar.id)} />
+						</div>
 						<p>{seminar.description}</p>
 						<p>
 							{seminar.date} в {seminar.time}
