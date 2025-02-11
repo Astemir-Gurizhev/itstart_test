@@ -1,29 +1,14 @@
 import { useState } from 'react'
 import Modal from 'react-modal'
+import { EditSeminarProps } from '../../types/editSeminar.types'
 import styles from './EditSeminar.module.css'
 
-interface Seminar {
-	id: number
-	title: string
-	description: string
-	date: string
-	time: string
-	photo: string
-}
-
-interface EditSeminarProps {
-	isOpen: boolean
-	onRequestClose: () => void
-	seminar: Seminar
-	onSave: (seminar: Seminar) => Promise<void>
-}
-
-const EditSeminar: React.FC<EditSeminarProps> = ({
+export const EditSeminar = ({
 	isOpen,
 	onRequestClose,
 	seminar,
 	onSave,
-}) => {
+}: EditSeminarProps) => {
 	const [title, setTitle] = useState<string>(seminar.title)
 	const [description, setDescription] = useState<string>(seminar.description)
 	const [date, setDate] = useState<string>(seminar.date)
@@ -97,5 +82,3 @@ const EditSeminar: React.FC<EditSeminarProps> = ({
 		</Modal>
 	)
 }
-
-export default EditSeminar

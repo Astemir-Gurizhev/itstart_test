@@ -1,63 +1,55 @@
-import { useEffect, useState } from 'react';
-import { FaSpinner } from 'react-icons/fa';
-import EditSeminar from '../edit-seminar/EditSeminar';
-import styles from './Seminars.module.css';
+import { useEffect, useState } from 'react'
+import { FaSpinner } from 'react-icons/fa'
+import { Seminar } from '../../types/seminar.types'
+import { EditSeminar } from '../edit-seminar/EditSeminar'
+import styles from './Seminars.module.css'
 
-interface Seminar {
-	id: number;
-	title: string;
-	description: string;
-	date: string;
-	time: string;
-	photo: string;
-}
-
-const Seminars: React.FC = () => {
-	const [seminars, setSeminars] = useState<Seminar[]>([]);
-	const [loading, setLoading] = useState<boolean>(true);
-	const [error, setError] = useState<string | null>(null);
-	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-	const [currentSeminar, setCurrentSeminar] = useState<Seminar | null>(null);
+export const Seminars = () => {
+	const [seminars, setSeminars] = useState<Seminar[]>([])
+	const [loading, setLoading] = useState<boolean>(true)
+	const [error, setError] = useState<string | null>(null)
+	const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+	const [currentSeminar, setCurrentSeminar] = useState<Seminar | null>(null)
 
 	useEffect(() => {
 		const fetchSeminars = async () => {
 			try {
-				await new Promise(resolve => setTimeout(resolve, 1000));
-				const response = await fetch('http://localhost:5000/seminars');
-				if (!response.ok) throw new Error('Ошибка при загрузке данных');
-				const data: Seminar[] = await response.json();
-				setSeminars(data);
+				await new Promise(resolve => setTimeout(resolve, 1000))
+				const response = await fetch('http://localhost:5000/seminars')
+				if (!response.ok) throw new Error('Ошибка при загрузке данных')
+				const data: Seminar[] = await response.json()
+				setSeminars(data)
 			} catch (error) {
 				if (error instanceof Error) {
-					setError(error.message); 
+					setError(error.message)
 				} else {
-					setError('Неизвестная ошибка'); 
+					setError('Неизвестная ошибка')
 				}
 			} finally {
-				setLoading(false);
+				setLoading(false)
 			}
-		};
+		}
 
-		fetchSeminars();
-	}, []);
+		fetchSeminars()
+	}, [])
 
 	useEffect(() => {
-		document.body.style.overflow = loading ? 'hidden' : 'auto';
-	}, [loading]);
+		document.body.style.overflow = loading ? 'hidden' : 'auto'
+	}, [loading])
 
 	const handleDelete = async (id: number) => {
 		if (window.confirm('Вы уверены, что хотите удалить семинар?')) {
 			await fetch(`http://localhost:5000/seminars/${id}`, {
 				method: 'DELETE',
-			});
-			setSeminars(seminars.filter(seminar => seminar.id !== id));
+			})
+			setSeminars(seminars.filter(seminar => seminar.id !== id))
 		}
-	};
+	}
 
 	const handleEdit = (seminar: Seminar) => {
-		setCurrentSeminar(seminar);
-		setIsModalOpen(true);
-	};
+		setCurrentSeminar(seminar)
+		setIsModalOpen(true)
+	}
 
 	const handleSave = async (updatedSeminar: Seminar) => {
 		await fetch(`http://localhost:5000/seminars/${updatedSeminar.id}`, {
@@ -66,20 +58,20 @@ const Seminars: React.FC = () => {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify(updatedSeminar),
-		});
+		})
 		setSeminars(
 			seminars.map(seminar =>
 				seminar.id === updatedSeminar.id ? updatedSeminar : seminar
 			)
-		);
-	};
+		)
+	}
 
 	if (loading)
 		return (
 			<div className={styles.spinner}>
 				<FaSpinner />
 			</div>
-		);
+		)
 	if (error)
 		return (
 			<div
@@ -92,7 +84,7 @@ const Seminars: React.FC = () => {
 			>
 				{error}
 			</div>
-		);
+		)
 
 	return (
 		<div>
@@ -122,7 +114,5 @@ const Seminars: React.FC = () => {
 				/>
 			)}
 		</div>
-	 );
-};
-
-export default Seminars;
+	)
+}
