@@ -21,6 +21,12 @@
   display: inline-block;
   margin-right: 10px;
 }
+
+.post img {
+  width: 150px;
+  
+}
+
 .post button {
   margin-left: 5px;
 }

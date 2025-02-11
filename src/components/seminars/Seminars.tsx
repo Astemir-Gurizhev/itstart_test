@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { FaSpinner } from 'react-icons/fa'
-import { Seminar } from '../../types/seminar.types'
+import { Seminar } from '../../types/types'
 import { EditSeminar } from '../edit-seminar/EditSeminar'
 import styles from './Seminars.module.css'
 

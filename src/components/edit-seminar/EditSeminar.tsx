@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Modal from 'react-modal'
-import { EditSeminarProps } from '../../types/editSeminar.types'
+import { EditSeminarProps } from '../../types/types'
 import styles from './EditSeminar.module.css'
 
 export const EditSeminar = ({

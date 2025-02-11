@@ -1,13 +1,11 @@
-import Seminars from './components/seminars/Seminars'
+import { Seminars } from './components/seminars/Seminars'
 
 function App() {
-
-
-  return (
-    <>
-      <Seminars />
-    </>
-  )
+	return (
+		<>
+			<Seminars />
+		</>
+	)
 }
 
 export default App
