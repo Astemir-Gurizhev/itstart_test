@@ -9,7 +9,7 @@ import { MdModeEdit } from 'react-icons/md'
 
 export const Seminars = () => {
 	const { seminars, loading, error, handleDelete, handleSave } = useSeminars()
-	const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+	const [isModalOpen, setIsModalOpen] = useState(false)
 	const [currentSeminar, setCurrentSeminar] = useState<Seminar | null>(null)
 
 	const handleEdit = (seminar: Seminar) => {
